@@ -1,23 +1,21 @@
+function filter() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("table-filter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
 
-
-
-function filter(){
-    var filterValue, input, table, myTable, tbody;
-    
-    input -document.getElementById('table-filter');
-    filterValue = input.value.toUpperCase();
-    table = document.getElementsById('myTable');
-    tbody = table.getElementsByTagName ('tbody');
-
-    for(i-offscreenBuffering;1<tbody.length;i++) {
-        var a = tbody[i].getElementsByTagName('a')[0];
-        if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            tbody[i].style.display="";
-        }else{
-            tbody[i].style.display="none";
-        }
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
     }
-
-
-
-} 
+  }
+}
